@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hodzecore — My Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      min-height: 100vh;
+    }
+    header {
+      background: #1e293b;
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #334155;
+    }
+    header h1 { color: #38bdf8; font-size: 1.4rem; }
+    header p { color: #94a3b8; font-size: 0.9rem; }
+    .main { padding: 32px; max-width: 900px; margin: 0 auto; }
+    .welcome {
+      margin-bottom: 32px;
+    }
+    .welcome h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .welcome p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+    .progress-section {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+    }
+    .progress-section p {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-bottom: 10px;
+    }
+    .progress-bar-bg {
+      background: #334155;
+      border-radius: 99px;
+      height: 10px;
+      width: 100%;
+    }
+    .progress-bar-fill {
+      background: #38bdf8;
+      border-radius: 99px;
+      height: 10px;
+      width: 20%;
+      transition: width 0.5s ease;
+    }
+    .progress-label {
+      margin-top: 8px;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+    .lessons-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #94a3b8;
+      margin-bottom: 16px;
+    }
+    .lessons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .card-tag {
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 99px;
+      display: inline-block;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .tag-done { background: #14532d; color: #4ade80; }
+    .tag-active { background: #1e3a5f; color: #38bdf8; }
+    .tag-locked { background: #1e293b; color: #64748b; border: 1px solid #334155; }
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .card p {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .btn {
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary { background: #38bdf8; color: #0f172a; }
+    .btn-secondary {
+      background: transparent;
+      color: #64748b;
+      border: 1px solid #334155;
+      cursor: not-allowed;
+    }
+    .btn-review { background: #14532d; color: #4ade80; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Hodzecore</h1>
+    <p>AI-powered learning for Zimbabwean students</p>
+  </div>
+  <span style="color:#94a3b8; font-size:0.85rem;">Student Dashboard</span>
+</header>
+
+<div class="main">
+
+  <div class="welcome">
+    <h2>Welcome back, Tanaka 👋</h2>
+    <p>You are making progress. Keep going — one lesson at a time.</p>
+  </div>
+
+  <div class="progress-section">
+    <p>Overall progress — 1 of 5 lessons complete</p>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill"></div>
+    </div>
+    <p class="progress-label">20% complete</p>
+  </div>
+
+  <p class="lessons-title">Your lessons</p>
+
+  <div class="lessons-grid">
+
+    <div class="card">
+      <span class="card-tag tag-done">Completed</span>
+      <h3>Lesson 1 — Hello World</h3>
+      <p>Your first program. You learned how to print text using drag-and-drop blocks.</p>
+      <a href="learn.html" class="btn btn-review">Review lesson</a>
+    </div>
+
+    <div class="card">
+      <span class="card-tag tag-active">In Progress</span>
+      <h3>Lesson 2 — Variables</h3>
+      <p>Learn how to store information in your program using variables.</p>
+      <a href="learn.html" class="btn btn-primary">Start lesson</a>
+    </div>
+
+    <div class="card">
+      <span class="card-tag tag-locked">Locked</span>
+      <h3>Lesson 3 — Loops</h3>
+      <p>Repeat actions automatically. Make your program do more with less.</p>
+      <button class="btn btn-secondary" disabled>Locked</button>
+    </div>
+
+    <div class="card">
+      <span class="card-tag tag-locked">Locked</span>
+      <h3>Lesson 4 — Logic</h3>
+      <p>Teach your program to make decisions using if-else conditions.</p>
+      <button class="btn btn-secondary" disabled>Locked</button>
+    </div>
+
+    <div class="card">
+      <span class="card-tag tag-locked">Locked</span>
+      <h3>Lesson 5 — Build a Project</h3>
+      <p>Use everything you have learned to build your first real project.</p>
+      <button class="btn btn-secondary" disabled>Locked</button>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
