@@ -130,14 +130,14 @@
     <h1>Hodzecore</h1>
     <p>AI-powered learning for Zimbabwean students</p>
   </div>
-  <span style="color:#94a3b8; font-size:0.85rem;">Student Dashboard</span>
+ <button onclick="logout()" style="background:transparent; border:1px solid #334155; color:#94a3b8; padding:6px 16px; border-radius:8px; font-size:0.85rem; cursor:pointer;">Log out</button>
 </header>
 
 <div class="main">
 
   <div class="welcome">
-    <h2>Welcome back, Tanaka 👋</h2>
-    <p>You are making progress. Keep going — one lesson at a time.</p>
+    <h2 id="welcome-msg">Welcome back 👋</h2>
+    <p id="grade-msg">You are making progress. Keep going — one lesson at a time.</p>
   </div>
 
   <div class="progress-section">
@@ -190,5 +190,21 @@
   </div>
 </div>
 
-</body>
+<script>
+  const name = localStorage.getItem('hc_name');
+  const grade = localStorage.getItem('hc_grade');
+
+  if (!name) {
+    window.location.href = 'login.html';
+  } else {
+    document.getElementById('welcome-msg').textContent = 'Welcome back, ' + name + ' 👋';
+    document.getElementById('grade-msg').textContent = grade + ' — You are making progress. Keep going.';
+  }
+
+  function logout() {
+    localStorage.removeItem('hc_name');
+    localStorage.removeItem('hc_grade');
+    window.location.href = 'login.html';
+  }
+</script></body>
 </html>
