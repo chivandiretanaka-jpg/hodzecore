@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hodzecore — Lesson 2: Variables</title>
+  <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      min-height: 100vh;
+    }
+    header {
+      background: #1e293b;
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #334155;
+    }
+    header h1 { color: #38bdf8; font-size: 1.4rem; }
+    header p { color: #94a3b8; font-size: 0.9rem; }
+    .main { padding: 32px; max-width: 900px; margin: 0 auto; }
+    .lesson-header {
+      margin-bottom: 24px;
+    }
+    .lesson-header h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .lesson-header p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .concept-box {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-left: 4px solid #38bdf8;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+    .concept-box h3 {
+      font-size: 1rem;
+      color: #38bdf8;
+      margin-bottom: 10px;
+    }
+    .concept-box p {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+    .challenge-box {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+    .challenge-box h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: #f8fafc;
+    }
+    .challenge-box p {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .steps {
+      list-style: none;
+      margin-bottom: 16px;
+    }
+    .steps li {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    .steps li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #38bdf8;
+    }
+    #blocklyDiv {
+      height: 380px;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      margin-bottom: 16px;
+    }
+    .controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    #runBtn { background: #38bdf8; color: #0f172a; }
+    #hintBtn { background: #334155; color: #f8fafc; }
+    #completeBtn { background: #14532d; color: #4ade80; }
+    #output {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 60px;
+      font-family: monospace;
+      font-size: 0.95rem;
+      color: #4ade80;
+      margin-bottom: 16px;
+    }
+    #hint-box {
+      display: none;
+      background: #1c2a3a;
+      border: 1px solid #38bdf8;
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 0.9rem;
+      color: #7dd3fc;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Hodzecore</h1>
+    <p>AI-powered learning for Zimbabwean students</p>
+  </div>
+  <a href="dashboard.html" style="color:#94a3b8; font-size:0.85rem; text-decoration:none;">← Back to Dashboard</a>
+</header>
+
+<div class="main">
+
+  <div class="lesson-header">
+    <h2>Lesson 2 — Variables</h2>
+    <p>In this lesson you will learn what a variable is and how to use one in your program. This is one of the most important ideas in all of coding.</p>
+  </div>
+
+  <div class="concept-box">
+    <h3>What is a variable?</h3>
+    <p>A variable is a box that stores information. You give the box a name, and you put something inside it. Your program can then use that information whenever it needs it.</p>
+    <br>
+    <p>Example: Imagine a box called <strong>name</strong>. You put the word <strong>Tanaka</strong> inside it. Now whenever your program needs your name, it just opens that box.</p>
+  </div>
+
+  <div class="challenge-box">
+    <h3>Your challenge</h3>
+    <p>Use Blockly to create a variable, store your name in it, and print it to the screen.</p>
+    <ul class="steps">
+      <li>Click Variables on the left panel</li>
+      <li>Click Create variable and name it: myName</li>
+      <li>Drag the set myName block into the workspace</li>
+      <li>Connect a Text block and type your name inside it</li>
+      <li>Add a print block and connect the myName variable to it</li>
+      <li>Click Run — your name should appear in the output</li>
+    </ul>
+
+    <div id="blocklyDiv"></div>
+
+    <div class="controls">
+      <button id="runBtn" onclick="runCode()">▶ Run Code</button>
+      <button id="hintBtn" onclick="showHint()">💡 Get a Hint</button>
+      <button id="completeBtn" onclick="markComplete()">✓ Mark as Complete</button>
+    </div>
+
+    <div id="output">Output will appear here...</div>
+    <div id="hint-box"></div>
+
+  </div>
+</div>
+
+<xml id="toolbox" style="display:none">
+  <category name="Logic" colour="#5C81A6">
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+  </category>
+  <category name="Loops" colour="#5BA55B">
+    <block type="controls_repeat_ext"></block>
+  </category>
+  <category name="Math" colour="#5B67A5">
+    <block type="math_number"></block>
+    <block type="math_arithmetic"></block>
+  </category>
+  <category name="Text" colour="#5BA58C">
+    <block type="text"></block>
+    <block type="text_print"></block>
+  </category>
+  <category name="Variables" colour="#A55B5B" custom="VARIABLE"></category>
+</xml>
+
+<script>
+  const workspace = Blockly.inject('blocklyDiv', {
+    toolbox: document.getElementById('toolbox'),
+    scrollbars: true,
+    trashcan: true,
+    theme: Blockly.Themes.Dark
+  });
+
+  function runCode() {
+    const output = document.getElementById('output');
+    const logs = [];
+    const realLog = console.log;
+    console.log = (...args) => logs.push(args.join(' '));
+    try {
+      const code = Blockly.JavaScript.javascriptGenerator
+        ? Blockly.JavaScript.javascriptGenerator.workspaceToCode(workspace)
+        : Blockly.JavaScript.workspaceToCode(workspace);
+      eval(code);
+      output.textContent = logs.length
+        ? logs.join('\n')
+        : 'Code ran. No output produced. Check your blocks.';
+    } catch(e) {
+      output.textContent = 'Error: ' + e.message;
+    }
+    console.log = realLog;
+  }
+
+  function showHint() {
+    const box = document.getElementById('hint-box');
+    box.style.display = 'block';
+    box.textContent = 'Hint: Start by clicking Variables on the left. Create a variable called myName. Then use the set myName block and connect a Text block with your name inside it. Finally drag a print block and connect the myName variable to it. Then click Run.';
+  }
+
+  function markComplete() {
+    localStorage.setItem('lesson2', 'complete');
+    alert('Well done! Lesson 2 complete. Returning to your dashboard.');
+    window.location.href = 'dashboard.html';
+  }
+</script>
+
+</body>
+</html>
